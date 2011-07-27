@@ -85,4 +85,18 @@ public final class BuildHelper
     {
         return getModifiedFiles(buildContext, source, null, null);
     }
+
+    public static String[] getModifiedFiles(
+                                    MavenSession mavenSession, MojoExecution mojoExecution,
+                                    IMaven maven, BuildContext buildContext,
+                                    String sourceParam)
+        throws Exception
+    {
+        return
+            getModifiedFiles(
+                    buildContext,
+                    maven.getMojoParameterValue(mavenSession, mojoExecution, sourceParam, File.class),
+                    null,
+                    null);
+    }
 }
