@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e;
+package org.bitstrings.eclipse.m2e.common;
 
 import java.io.File;
 
