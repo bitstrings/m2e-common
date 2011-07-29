@@ -71,7 +71,7 @@ public final class BuildHelper
                                     String[] includes, String[] excludes)
         throws Exception
     {
-        if (source == null)
+        if ((source == null) || !source.exists())
         {
             return null;
         }
