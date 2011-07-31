@@ -21,7 +21,7 @@
     </parent>
 
     <artifactId>org.bitstrings.eclipse.m2e.common</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>m2e :: Common</name>
 
