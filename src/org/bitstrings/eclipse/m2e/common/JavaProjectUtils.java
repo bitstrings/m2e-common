@@ -22,6 +22,6 @@ public class JavaProjectUtils
 
     public static boolean containsPath(IPath path, IClasspathEntry... classpathEntries)
     {
-        return (indexOfPath(path, classpathEntries) != -1);
+        return (indexOfPath(path, classpathEntries) > -1);
     }
 }
