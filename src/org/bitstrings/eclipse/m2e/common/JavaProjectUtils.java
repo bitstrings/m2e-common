@@ -11,7 +11,7 @@ public class JavaProjectUtils
     {
         for (int i = 0; i < classpathEntries.length; i++)
         {
-            if (classpathEntries[i].equals(path))
+            if (classpathEntries[i].getPath().equals(path))
             {
                 return i;
             }
