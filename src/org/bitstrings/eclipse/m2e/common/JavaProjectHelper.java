@@ -3,9 +3,9 @@ package org.bitstrings.eclipse.m2e.common;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jdt.core.IClasspathEntry;
 
-public class JavaProjectUtils
+public final class JavaProjectHelper
 {
-    private JavaProjectUtils() {}
+    private JavaProjectHelper() {}
 
     public static int indexOfPath(IPath path, IClasspathEntry... classpathEntries)
     {
