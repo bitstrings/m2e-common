@@ -28,9 +28,9 @@
     <packaging>eclipse-plugin</packaging>
 
     <scm>
-        <connection>scm:git:git@github.com:bitstrings/m2e-common.git</connection>
-        <developerConnection>scm:git:git@github.com:bitstrings/m2e-common.git</developerConnection>
-        <url>scm:git:git@github.com:bitstrings/m2e-common.git</url>
+        <connection>scm:git:https://github.com/bitstrings/m2e-common.git</connection>
+        <developerConnection>scm:git:https://github.com/bitstrings/m2e-common.git</developerConnection>
+        <url>https://github.com/bitstrings/m2e-common.git</url>
     </scm>
 
     <build>
