@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.bitstrings.eclipse.m2e</groupId>
         <artifactId>m2e-parent</artifactId>
-        <version>6</version>
+        <version>6-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.bitstrings.eclipse.m2e.common</artifactId>
