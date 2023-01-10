@@ -14,7 +14,9 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecution;
+import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.Scanner;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.m2e.core.embedder.IMaven;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
@@ -23,44 +25,48 @@ public final class BuildHelper
     private BuildHelper() {}
 
     public static String[] getModifiedFiles(
-                                    MavenSession mavenSession, MojoExecution mojoExecution,
+                                    MavenSession mavenSession, MojoExecution mojoExecution,	
                                     IMaven maven, BuildContext buildContext,
-                                    File source,
+                                    IProgressMonitor progressMonitor,
+                                    File source, 
                                     String includesParam, String excludesParam)
         throws Exception
     {
+    	MavenProject mavenProject = mavenSession.getCurrentProject();
         return getModifiedFiles(buildContext,
                         source,
-                        maven.getMojoParameterValue(mavenSession, mojoExecution, includesParam, String[].class),
-                        maven.getMojoParameterValue(mavenSession, mojoExecution, excludesParam, String[].class));
+                        maven.getMojoParameterValue(mavenProject, mojoExecution, includesParam, String[].class, progressMonitor),
+                        maven.getMojoParameterValue(mavenProject, mojoExecution, excludesParam, String[].class, progressMonitor));
     }
 
     public static String[] getModifiedFiles(
                                     MavenSession mavenSession, MojoExecution mojoExecution,
-                                    IMaven maven, BuildContext buildContext,
+                                    IMaven maven, BuildContext buildContext, 
+                                    IProgressMonitor progressMonitor,
                                     String sourceParam,
                                     String includesParam, String excludesParam)
         throws Exception
     {
-        return
-            getModifiedFiles(
+    	MavenProject mavenProject = mavenSession.getCurrentProject();
+        return getModifiedFiles(
                     buildContext,
-                    maven.getMojoParameterValue(mavenSession, mojoExecution, sourceParam, File.class),
-                    maven.getMojoParameterValue(mavenSession, mojoExecution, includesParam, String[].class),
-                    maven.getMojoParameterValue(mavenSession, mojoExecution, excludesParam, String[].class));
+                    maven.getMojoParameterValue(mavenProject, mojoExecution, sourceParam, File.class, progressMonitor),
+                    maven.getMojoParameterValue(mavenProject, mojoExecution, includesParam, String[].class, progressMonitor),
+                    maven.getMojoParameterValue(mavenProject, mojoExecution, excludesParam, String[].class, progressMonitor));
     }
 
     public static String[] getModifiedFiles(
                                     MavenSession mavenSession, MojoExecution mojoExecution,
                                     IMaven maven, BuildContext buildContext,
+                                    IProgressMonitor progressMonitor,
                                     String sourceParam,
                                     String[] includes, String[] excludes)
         throws Exception
     {
-        return
-            getModifiedFiles(
+    	MavenProject mavenProject = mavenSession.getCurrentProject();
+        return getModifiedFiles(
                     buildContext,
-                    maven.getMojoParameterValue(mavenSession, mojoExecution, sourceParam, File.class),
+                    maven.getMojoParameterValue(mavenProject, mojoExecution, sourceParam, File.class, progressMonitor),
                     includes,
                     excludes);
     }
@@ -102,13 +108,14 @@ public final class BuildHelper
     public static String[] getModifiedFiles(
                                     MavenSession mavenSession, MojoExecution mojoExecution,
                                     IMaven maven, BuildContext buildContext,
+                                    IProgressMonitor progressMonitor,
                                     String sourceParam)
         throws Exception
     {
-        return
-            getModifiedFiles(
+    	MavenProject mavenProject = mavenSession.getCurrentProject();
+        return getModifiedFiles(
                     buildContext,
-                    maven.getMojoParameterValue(mavenSession, mojoExecution, sourceParam, File.class),
+                    maven.getMojoParameterValue(mavenProject, mojoExecution, sourceParam, File.class, progressMonitor),
                     null,
                     null);
     }
